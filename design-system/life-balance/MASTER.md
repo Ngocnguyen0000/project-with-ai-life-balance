@@ -7,100 +7,119 @@
 ---
 
 **Project:** Life Balance
-**Generated:** 2026-07-11 00:40:40 (superseded 2026-07-11 — palette/style replaced per user reference image)
-**Category:** Freelancer Platform
+**Version:** v3 (final, approved 2026-07-11)
+**Category:** Freelancer Platform + Personal Wellness (Life Balance Overview)
+
+> **History:** v1 was an auto-generated indigo/dark palette (rejected — looked unfinished/flat). v2 followed a user-provided coral/pink e-commerce reference (visually fine but too vivid for a data-dense daily-use app). v3 is the approved direction: a custom soft sage-green pastel palette the user explicitly asked for, styled as "Soft UI Evolution" — chosen because it fits both halves of the product (professional task/time tool + personal wellness radar) and stays WCAG AA+ compliant, unlike raw neumorphism.
 
 ---
 
 ## Global Rules
 
-### Color Palette (v2 — coral/pink gradient, per user reference image)
+### Color Palette
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#FF6B7A` | `--color-primary` |
-| On Primary | `#FFFFFF` | `--color-on-primary` |
-| Accent/CTA (solid) | `#FF5F6D` | `--color-accent` |
-| Accent gradient start | `#FF9A8B` | `--color-accent-gradient-start` |
-| Accent gradient end | `#FF5F6D` | `--color-accent-gradient-end` |
-| Background | `#FFF1F1` | `--color-background` |
-| Surface (cards) | `#FFFFFF` | `--color-surface` |
-| Foreground | `#33262A` | `--color-foreground` |
-| Muted | `#FFE3E6` | `--color-muted` |
-| Border | `#FFD3D9` | `--color-border` |
-| Destructive | `#E63946` | `--color-destructive` |
-| Ring | `#FF6B7A` | `--color-ring` |
+| Role | Hex | CSS Variable | Usage |
+|------|-----|--------------|-------|
+| Primary / Brand | `#5FA987` | `--color-primary` | Nav highlights, links, primary brand moments |
+| On Primary | `#FFFFFF` | `--color-on-primary` | Text/icons on primary or accent fills |
+| Accent / CTA | `#4E9F76` | `--color-accent` | Buttons, primary actions (slightly deeper than primary for contrast) |
+| Background | `#F5FBF8` | `--color-background` | App canvas (mint-tinted off-white) |
+| Surface | `#FFFFFF` | `--color-surface` | Cards, inputs, sidebar — always distinct from background |
+| Foreground | `#2B332F` | `--color-foreground` | Primary text (warm dark, green undertone) |
+| Muted | `#E8F5EE` | `--color-muted` | Secondary surfaces, badges, hover fills |
+| Border | `#D7E8DF` | `--color-border` | Card/input borders, dividers |
+| Destructive | `#DC4C3F` | `--color-destructive` | Errors, delete actions (softened red, stays in pastel family) |
+| Ring | `#5FA987` | `--color-ring` | Focus rings |
 
-**Color Notes:** Warm coral/pink palette replacing the earlier indigo system, per a reference mobile-app mockup (gradient coral background, white floating cards, pill gradient buttons, underline inputs). `background` (#FFF1F1) is a soft flat blush for data-dense app screens (Dashboard, Kanban, Timesheet) — readability first. Marketing-flavored screens (auth/onboarding) may use the full vivid two-stop gradient (`accent-gradient-start` → `accent-gradient-end`, diagonal) as the page background instead of flat `background`, matching the reference exactly. Cards are always white (`surface`) with a tinted coral shadow, never gradient-filled (gradient is reserved for buttons and small decorative headers only, so data stays readable).
+**Life Balance radar axis colors** (distinct per axis, same pastel/muted family so the 4-axis chart stays harmonious):
 
-### Typography (v2)
+| Axis | Hex | CSS Variable | Meaning |
+|------|-----|--------------|---------|
+| Công việc (Work) | `#5FA987` | `--color-axis-work` | = Primary. Computed from real task/time data (Epic 7). |
+| Tình yêu (Love) | `#E8A0BF` | `--color-axis-love` | Dusty rose pastel — warmth |
+| Sức khỏe (Health) | `#7EC8C0` | `--color-axis-health` | Soft teal pastel — calm |
+| Tài chính (Finance) | `#E8B86D` | `--color-axis-finance` | Soft amber pastel — prosperity |
 
-- **Heading Font:** Varela Round
-- **Body Font:** Nunito Sans
-- **Mood:** soft, rounded, friendly, approachable, warm — matches the reference's rounded corners and gradient card style
-- **Google Fonts:** [Varela Round + Nunito Sans](https://fonts.google.com/share?selection.family=Nunito+Sans:wght@300;400;500;600;700|Varela+Round)
+**Color Notes:** All colors are intentionally desaturated/muted ("pastel" per the user's explicit request), not neon. `background` is a very light mint tint, not pure white, so white `surface` cards visibly float without needing heavy shadows. Never use raw/saturated green (e.g. `#22C55E`, `#16A34A`) anywhere in this product — it reads as generic "success green," not the brand.
+
+### Typography
+
+- **Heading Font:** Nunito Sans (SemiBold/Bold weights)
+- **Body Font:** Nunito Sans (Regular/Medium weights)
+- **Mood:** soft, calm, friendly, legible — rounded enough to feel warm, restrained enough to stay professional for dense data screens (Kanban, Timesheet)
+- **Google Fonts:** [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans)
 
 **CSS Import:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap');
 ```
+
+**Type scale:**
+
+| Style | Size | Weight | Usage |
+|-------|------|--------|-------|
+| Display | 40px | Bold (700) | Radar screen hero number, marketing moments |
+| Heading 1 | 32px | Bold (700) | Screen titles |
+| Heading 2 | 24px | SemiBold (600) | Section titles |
+| Heading 3 | 18px | SemiBold (600) | Card titles |
+| Body | 16px | Regular (400) | Default body text |
+| Label | 14px | Medium (500) | Form labels, nav items |
+| Caption | 12px | Regular (400) | Meta text, timestamps |
 
 ### Spacing Variables
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
+| `--space-xs` | `4px` | Tight gaps |
+| `--space-sm` | `8px` | Icon gaps, inline spacing |
+| `--space-md` | `16px` | Standard padding |
+| `--space-lg` | `24px` | Section padding |
+| `--space-xl` | `32px` | Large gaps |
+| `--space-2xl` | `48px` | Section margins |
+| `--space-3xl` | `64px` | Hero padding |
 
-### Shadow Depths
+### Shadow Depths — "Soft UI Evolution"
 
-> **Override note:** the auto-generated base style ("Flat Design") defaults to no shadows. This project intentionally overrides that — cards float on a tinted indigo background, so shadows use the brand color (not neutral black) for a polished, non-flat feel similar to Linear/Notion.
+Softer and more layered than a flat drop shadow, but not full neumorphism (no inset/embossed shadows — those hurt accessibility). Shadows use the primary green at low opacity, not neutral black.
 
 | Level | Value | Usage |
 |-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(99,102,241,0.06)` | Subtle lift (inputs, list rows) |
-| `--shadow-md` | `0 4px 12px rgba(99,102,241,0.10)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 24px rgba(99,102,241,0.14)` | Dropdowns, popovers, hover state on cards |
-| `--shadow-xl` | `0 20px 40px rgba(99,102,241,0.18)` | Modals, dialogs |
+| `--shadow-sm` | `0 1px 3px rgba(95,169,135,0.08)` | Inputs, list rows |
+| `--shadow-md` | `0 4px 10px rgba(95,169,135,0.12)` | Cards, buttons |
+| `--shadow-lg` | `0 10px 20px rgba(95,169,135,0.16)` | Dropdowns, hover state on cards |
+| `--shadow-xl` | `0 16px 32px rgba(95,169,135,0.20)` | Modals, dialogs |
+
+Border radius: **8-12px** across the system (not full-pill, not sharp corners) — matches "Soft UI Evolution," reads as calm/professional rather than playful or corporate-sharp.
 
 ---
 
 ## Component Specs
 
-### Buttons (v2 — full pill, gradient fill)
+### Buttons
 
 ```css
-/* Primary Button — pill shape, coral gradient, per reference */
 .btn-primary {
-  background: linear-gradient(135deg, #FF9A8B 0%, #FF5F6D 100%);
-  color: white;
-  padding: 14px 32px;
-  border-radius: 999px; /* full pill, not 8px */
-  font-weight: 700;
-  font-family: 'Varela Round';
-  box-shadow: 0 8px 20px rgba(255, 95, 109, 0.35); /* colored shadow, not neutral */
+  background: #4E9F76;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
   transition: all 200ms ease;
   cursor: pointer;
 }
-
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(255, 95, 109, 0.45);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Secondary Button */
 .btn-secondary {
-  background: white;
-  color: #FF6B7A;
-  border: 2px solid #FF6B7A;
-  padding: 12px 30px;
-  border-radius: 999px;
-  font-weight: 700;
+  background: #FFFFFF;
+  color: #4E9F76;
+  border: 1.5px solid #4E9F76;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
   transition: all 200ms ease;
   cursor: pointer;
 }
@@ -108,87 +127,66 @@
 
 ### Cards
 
-Cards use a **white surface** (`#FFFFFF`) distinct from the page background (`#EEF2FF`) so they visibly float, plus a tinted shadow for depth — this is the main fix for the "flat/no depth" feedback.
-
 ```css
 .card {
-  background: #FFFFFF; /* distinct from page background for float effect */
-  border: 1px solid #C7D2FE;
+  background: #FFFFFF; /* always distinct from #F5FBF8 background */
+  border: 1px solid #D7E8DF;
   border-radius: 12px;
   padding: 24px;
   box-shadow: var(--shadow-md);
   transition: all 200ms ease;
-  cursor: pointer;
 }
-
 .card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
 }
 ```
 
-### Inputs (v2 — underline style with icon + small-caps label, per reference)
+### Inputs
 
-```html
-<label class="input-label">CARDHOLDER NAME</label>
-<div class="input-underline">
-  <svg class="input-icon"><!-- 16px icon --></svg>
-  <input placeholder="Lorem Ipsum" />
-</div>
-```
+Standard boxed inputs (not underline — that was v2's reference-driven style, dropped along with the coral palette).
 
 ```css
-.input-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #33262A99; /* foreground at ~60% */
-  margin-bottom: 6px;
-  display: block;
-}
-
-.input-underline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 2px;
-  border: none;
-  border-bottom: 1.5px solid #FFD3D9; /* border token, bottom only — no box */
-  background: transparent;
+.input {
+  background: #FFFFFF;
+  padding: 12px 16px;
+  border: 1px solid #D7E8DF;
+  border-radius: 10px;
+  font-size: 16px;
   transition: border-color 200ms ease;
 }
-
-.input-underline:focus-within {
-  border-bottom-color: #FF6B7A;
-}
-
-.input-icon {
-  width: 16px;
-  height: 16px;
-  color: #FF6B7A;
+.input:focus {
+  border-color: #5FA987;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(95,169,135,0.15);
 }
 ```
 
 ### Icons
 
-Flat 2D icon language, but never emoji. Use **Heroicons** (outline, 1.5px stroke) or **Lucide** as the single icon set across the whole product.
+Flat 2D icon language, never emoji. Use **Heroicons** (outline, 1.5px stroke) or **Lucide** as the single icon set across the whole product.
 
 - Size tokens: `--icon-sm: 16px`, `--icon-md: 20px`, `--icon-lg: 24px`
-- Default color: `--color-foreground` (`#312E81`); active/selected nav icons use `--color-accent` (`#16A34A`)
-- Icons sit inline with text at 8px gap (`--space-sm`), never stretched or skewed
-- Sidebar nav, empty states, and stat cards should always pair an icon with its label — icon-only is reserved for well-known actions (close, search) with an `aria-label`
+- Default color: `--color-foreground`; active/selected nav icons use `--color-accent`
+- Icons sit inline with text at 8px gap, never stretched or skewed
+
+### Life Balance Radar Chart (Epic 7 — this product's signature component)
+
+- 4-axis radar/spider chart, scale 0–10 per axis
+- Axis line/fill color = the axis token above (`--color-axis-work/love/health/finance`), at ~25% fill opacity + full-opacity stroke
+- Center label shows overall balance score (average or weighted)
+- Tapping an axis navigates to that axis's detail/history view
+- Empty/low-data state: show dashed axis line + "Chưa có dữ liệu" instead of a fake zero value
 
 ### Modals
 
 ```css
 .modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(43, 51, 47, 0.45); /* foreground color at low opacity, not pure black */
   backdrop-filter: blur(4px);
 }
-
 .modal {
-  background: white;
+  background: #FFFFFF;
   border-radius: 16px;
   padding: 32px;
   box-shadow: var(--shadow-xl);
@@ -201,39 +199,28 @@ Flat 2D icon language, but never emoji. Use **Heroicons** (outline, 1.5px stroke
 
 ## Style Guidelines
 
-**Style (v2):** Soft Gradient / Rounded Consumer — replaces the earlier "Enterprise SaaS indigo" direction after the user shared a reference mockup (coral/pink checkout-flow UI) and asked to match it directly.
+**Style:** Soft UI Evolution — modern, accessible evolution of neumorphism/soft-UI. Chosen because the style database recommends it specifically for "health/wellness + modern business tools," matching this product's dual nature (freelancer work tool + personal life-balance tracker).
 
-**Keywords:** full-pill rounded buttons, coral-to-salmon gradient fills, white floating cards on a soft blush canvas, underline inputs with icon + uppercase micro-label, rounded friendly typography (Varela Round/Nunito Sans), colored (coral) drop shadows, illustration-friendly
+**Keywords:** soft layered shadows (not flat, not embossed), pastel/desaturated sage-green palette, 8-12px border radius, calm and legible, WCAG AA+, subtle 200-300ms transitions, icon-heavy (never emoji)
 
-**Best For:** Consumer-facing mobile apps, checkout/onboarding flows, friendly SaaS tools that want to feel approachable rather than corporate
+**Best For:** Hybrid productivity + wellness apps, modern SaaS that wants to feel calm rather than corporate or playful
 
-**Key Effects:** Coral-tinted shadows (not neutral, not indigo); gradient reserved for buttons + optional card headers/hero bands (never full-page for data-dense screens); hover = lift + shadow bloom; fast loading; icon-heavy (simple line icons, never emoji)
+**Key Effects:** Green-tinted soft shadows; hover = subtle lift + shadow bloom; no gradients on data-dense screens (gradients, if used at all, are reserved for the radar chart's axis fills); fast, restrained motion
 
-> **Why the second override:** first pass (Flat Design → Enterprise SaaS indigo) was functionally sound per the skill's auto-recommendation, but didn't match the user's actual taste. Design taste is ultimately a subjective creative-direction call — once the user provided a concrete reference image, that reference takes priority over the algorithmic recommendation. Keep the accessibility/depth/icon discipline from the first override; swap only the palette, shape language (pill vs 8px radius), and input style to match the reference.
-
-### Page Pattern
-
-**Pattern Name:** App Store Style Landing
-
-- **Conversion Strategy:** Show real screenshots. Include ratings (4.5+ stars). QR code for mobile. Platform-specific CTAs.
-- **CTA Placement:** Download buttons prominent (App Store + Play Store) throughout
-- **Section Order:** 1. Hero with device mockup, 2. Screenshots carousel, 3. Features with icons, 4. Reviews/ratings, 5. Download CTAs
+> **Why this direction (v3):** v1 (auto-generated indigo) was functionally fine but felt generic/unfinished. v2 (coral/pink, from a user-provided e-commerce reference) looked good in isolation but was too vivid for an app used daily across dense data screens (Kanban, Timesheet). After discussing tradeoffs, the user chose a custom soft pastel green — semantically fitting ("balance," "growth," health) and calmer for prolonged daily use. This is the approved, final direction until the user says otherwise.
 
 ---
 
 ## Anti-Patterns (Do NOT Use)
 
-- ❌ Poor profiles
-- ❌ No reviews
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
+- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide)
 - ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
 - ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
 - ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
 - ❌ **Instant state changes** — Always use transitions (150-300ms)
 - ❌ **Invisible focus states** — Focus states must be visible for a11y
+- ❌ **Raw/saturated green** (`#22C55E`, `#16A34A`, etc.) — always use the muted brand green tokens above
+- ❌ **Full-page vivid gradients on data screens** — gradients are reserved for the radar chart only
 
 ---
 
@@ -245,9 +232,10 @@ Before delivering any UI code, verify:
 - [ ] All icons from consistent icon set (Heroicons/Lucide)
 - [ ] `cursor-pointer` on all clickable elements
 - [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
+- [ ] Text contrast 4.5:1 minimum against `#F5FBF8` and `#FFFFFF` backgrounds
 - [ ] Focus states visible for keyboard navigation
 - [ ] `prefers-reduced-motion` respected
 - [ ] Responsive: 375px, 768px, 1024px, 1440px
 - [ ] No content hidden behind fixed navbars
 - [ ] No horizontal scroll on mobile
+- [ ] Radar chart axis colors match the 4 axis tokens exactly, not ad-hoc colors
