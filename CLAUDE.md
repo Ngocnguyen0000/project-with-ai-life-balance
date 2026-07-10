@@ -1,6 +1,6 @@
 # Life Balance — Project Context
 
-Freelancer work management app: task/project management, time tracking, light CRM. Web + native iOS (Swift/SwiftUI) + native Android (Kotlin/Jetpack Compose), shared Supabase backend (Postgres/Auth/Realtime/Storage). Commercial SaaS with Stripe billing.
+Freelancer work + life-balance app: task/project management, time tracking, light CRM, and a home screen showing a 4-axis life balance radar (Work/Love/Health/Finance — Work axis computed from real app data, the other 3 are user self-rated check-ins). Web + native iOS (Swift/SwiftUI) + native Android (Kotlin/Jetpack Compose), shared Supabase backend (Postgres/Auth/Realtime/Storage). Commercial SaaS with Stripe billing.
 
 Full requirements: [PRD.md](PRD.md)
 Epic/Story breakdown: [docs/epics/](docs/epics/)

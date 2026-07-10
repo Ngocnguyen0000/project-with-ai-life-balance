@@ -1,9 +1,9 @@
 # PRD — Life Balance
 
-**Product**: Life Balance — nền tảng quản lý công việc dành cho freelancer
-**Status**: Draft v0.1
+**Product**: Life Balance — nền tảng quản lý công việc và cân bằng cuộc sống dành cho freelancer
+**Status**: Draft v0.2
 **Owner**: Ngoc
-**Last updated**: 2026-07-10
+**Last updated**: 2026-07-11
 
 ## 1. Vấn đề & Tầm nhìn
 
@@ -11,8 +11,9 @@ Freelancer thường phải tự quản lý nhiều dự án, nhiều khách hà
 - Mất thời gian tổng hợp giờ làm để tính tiền
 - Không có cái nhìn tổng quan về deadline/tải công việc giữa các dự án
 - Thiếu lịch sử làm việc rõ ràng với từng khách hàng
+- Vì làm việc tự do không có ranh giới rõ ràng giữa công việc và cuộc sống cá nhân, freelancer dễ cắm đầu vào công việc mà quên mất các mặt khác của cuộc sống (tình cảm, sức khỏe, tài chính cá nhân) cho tới khi mất cân bằng nghiêm trọng
 
-**Life Balance** hợp nhất 3 việc: quản lý task/dự án, chấm công giờ làm (time tracking), và quản lý khách hàng (CRM nhẹ) vào một sản phẩm đồng bộ trên Web, iOS, Android — giúp freelancer làm việc có tổ chức và tính phí chính xác hơn.
+**Life Balance** hợp nhất quản lý task/dự án, chấm công giờ làm (time tracking), và quản lý khách hàng (CRM nhẹ) vào một sản phẩm đồng bộ trên Web, iOS, Android — giúp freelancer làm việc có tổ chức và tính phí chính xác hơn. Điểm khác biệt cốt lõi: màn hình trang chủ không chỉ hiện task cần làm, mà hiển thị **bức tranh cân bằng cuộc sống trên 4 trục — Công việc, Tình yêu, Sức khỏe, Tài chính** — đúng như tên sản phẩm, để công việc không âm thầm nuốt chửng các phần còn lại của cuộc sống.
 
 ## 2. Đối tượng người dùng
 
@@ -32,6 +33,7 @@ Freelancer thường phải tự quản lý nhiều dự án, nhiều khách hà
 
 ### Trong phạm vi (MVP — cả 3 nền tảng song song)
 - Đăng ký/đăng nhập, quản lý hồ sơ cá nhân
+- **Life Balance Overview (trang chủ)**: biểu đồ radar 4 trục Công việc/Tình yêu/Sức khỏe/Tài chính — trục Công việc tự tính từ dữ liệu thật, 3 trục còn lại người dùng tự chấm điểm định kỳ
 - Quản lý dự án & task (CRUD, trạng thái, deadline, ưu tiên)
 - Time tracking (bấm giờ theo task, nhập giờ thủ công, timesheet)
 - Quản lý khách hàng (CRM nhẹ): hồ sơ khách hàng, gắn dự án với khách hàng, ghi chú
@@ -66,6 +68,7 @@ Freelancer thường phải tự quản lý nhiều dự án, nhiều khách hà
 4. **Client Management (CRM nhẹ)** — hồ sơ khách hàng, gắn dự án, ghi chú, lịch sử
 5. **Billing & Subscription** — gói Free/Pro, thanh toán Stripe, giới hạn tính năng theo gói
 6. **Cross-Platform Sync & Notifications** — đồng bộ realtime, push notification, offline support
+7. **Life Balance Overview** — trang chủ dạng radar 4 trục (Công việc/Tình yêu/Sức khỏe/Tài chính), check-in tự chấm điểm, xu hướng theo thời gian, nhắc nhở check-in
 
 ## 7. Yêu cầu phi chức năng
 
@@ -85,7 +88,7 @@ Freelancer thường phải tự quản lý nhiều dự án, nhiều khách hà
 
 ## 9. Roadmap giai đoạn
 
-- **Phase 1 (MVP)**: Epic 1–4 (Auth, Task/Project, Time Tracking, Client Management) trên cả 3 nền tảng
+- **Phase 1 (MVP)**: Epic 1, 2, 3, 4, 7 (Auth, Task/Project, Time Tracking, Client Management, Life Balance Overview) trên cả 3 nền tảng — Life Balance Overview đi cùng Phase 1 vì là trang chủ, không phải tính năng phụ
 - **Phase 2**: Epic 5–6 (Billing, Sync/Notification nâng cao) hoàn thiện cho ra mắt SaaS trả phí
 - **Phase 3**: Invoice tự động, cộng tác nhóm, tích hợp lịch ngoài
 
