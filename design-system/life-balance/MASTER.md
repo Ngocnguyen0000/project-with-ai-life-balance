@@ -7,8 +7,8 @@
 ---
 
 **Project:** Life Balance
-**Generated:** 2026-07-11 00:06:49
-**Category:** Productivity Tool
+**Generated:** 2026-07-11 00:40:40
+**Category:** Freelancer Platform
 
 ---
 
@@ -18,29 +18,29 @@
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#0F172A` | `--color-primary` |
+| Primary | `#6366F1` | `--color-primary` |
 | On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#1E293B` | `--color-secondary` |
-| Accent/CTA | `#22C55E` | `--color-accent` |
-| Background | `#020617` | `--color-background` |
-| Foreground | `#F8FAFC` | `--color-foreground` |
-| Muted | `#1A1E2F` | `--color-muted` |
-| Border | `#334155` | `--color-border` |
-| Destructive | `#EF4444` | `--color-destructive` |
-| Ring | `#0F172A` | `--color-ring` |
+| Secondary | `#818CF8` | `--color-secondary` |
+| Accent/CTA | `#16A34A` | `--color-accent` |
+| Background | `#EEF2FF` | `--color-background` |
+| Foreground | `#312E81` | `--color-foreground` |
+| Muted | `#EBEFF9` | `--color-muted` |
+| Border | `#C7D2FE` | `--color-border` |
+| Destructive | `#DC2626` | `--color-destructive` |
+| Ring | `#6366F1` | `--color-ring` |
 
-**Color Notes:** Dark bg + green positive indicators
+**Color Notes:** Creative indigo + hire green [Accent adjusted from #22C55E for WCAG 3:1]. `background` (#EEF2FF) is the page/app canvas; `muted` (#EBEFF9) is for subtle secondary surfaces (sidebar, disabled fills); actual cards/inputs use white (`#FFFFFF`, not a separate token) with a tinted shadow so they float above the canvas — see Component Specs.
 
 ### Typography
 
 - **Heading Font:** Plus Jakarta Sans
 - **Body Font:** Plus Jakarta Sans
-- **Mood:** friendly, modern, saas, clean, approachable, professional
-- **Google Fonts:** [Plus Jakarta Sans + Plus Jakarta Sans](https://fonts.google.com/share?selection.family=Plus+Jakarta+Sans:wght@300;400;500;600;700)
+- **Mood:** enterprise, saas, b2b, professional, indigo, modern, approachable, legible, ios dynamic type, android scaling
+- **Google Fonts:** [Plus Jakarta Sans + Plus Jakarta Sans](https://fonts.google.com/share?selection.family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400)
 
 **CSS Import:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
 ```
 
 ### Spacing Variables
@@ -57,12 +57,14 @@
 
 ### Shadow Depths
 
+> **Override note:** the auto-generated base style ("Flat Design") defaults to no shadows. This project intentionally overrides that — cards float on a tinted indigo background, so shadows use the brand color (not neutral black) for a polished, non-flat feel similar to Linear/Notion.
+
 | Level | Value | Usage |
 |-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+| `--shadow-sm` | `0 1px 2px rgba(99,102,241,0.06)` | Subtle lift (inputs, list rows) |
+| `--shadow-md` | `0 4px 12px rgba(99,102,241,0.10)` | Cards, buttons |
+| `--shadow-lg` | `0 10px 24px rgba(99,102,241,0.14)` | Dropdowns, popovers, hover state on cards |
+| `--shadow-xl` | `0 20px 40px rgba(99,102,241,0.18)` | Modals, dialogs |
 
 ---
 
@@ -73,7 +75,7 @@
 ```css
 /* Primary Button */
 .btn-primary {
-  background: #22C55E;
+  background: #16A34A;
   color: white;
   padding: 12px 24px;
   border-radius: 8px;
@@ -90,8 +92,8 @@
 /* Secondary Button */
 .btn-secondary {
   background: transparent;
-  color: #0F172A;
-  border: 2px solid #0F172A;
+  color: #6366F1;
+  border: 2px solid #6366F1;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
@@ -102,9 +104,12 @@
 
 ### Cards
 
+Cards use a **white surface** (`#FFFFFF`) distinct from the page background (`#EEF2FF`) so they visibly float, plus a tinted shadow for depth — this is the main fix for the "flat/no depth" feedback.
+
 ```css
 .card {
-  background: #020617;
+  background: #FFFFFF; /* distinct from page background for float effect */
+  border: 1px solid #C7D2FE;
   border-radius: 12px;
   padding: 24px;
   box-shadow: var(--shadow-md);
@@ -122,19 +127,29 @@
 
 ```css
 .input {
+  background: #FFFFFF;
   padding: 12px 16px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #C7D2FE;
   border-radius: 8px;
   font-size: 16px;
   transition: border-color 200ms ease;
 }
 
 .input:focus {
-  border-color: #0F172A;
+  border-color: #6366F1;
   outline: none;
-  box-shadow: 0 0 0 3px #0F172A20;
+  box-shadow: 0 0 0 3px #6366F120;
 }
 ```
+
+### Icons
+
+Flat 2D icon language, but never emoji. Use **Heroicons** (outline, 1.5px stroke) or **Lucide** as the single icon set across the whole product.
+
+- Size tokens: `--icon-sm: 16px`, `--icon-md: 20px`, `--icon-lg: 24px`
+- Default color: `--color-foreground` (`#312E81`); active/selected nav icons use `--color-accent` (`#16A34A`)
+- Icons sit inline with text at 8px gap (`--space-sm`), never stretched or skewed
+- Sidebar nav, empty states, and stat cards should always pair an icon with its label — icon-only is reserved for well-known actions (close, search) with an `aria-label`
 
 ### Modals
 
@@ -158,28 +173,30 @@
 
 ## Style Guidelines
 
-**Style:** Flat Design
+**Style:** Flat Design, overridden with light depth ("Enterprise SaaS" polish)
 
-**Keywords:** 2D, minimalist, bold colors, no shadows, clean lines, simple shapes, typography-focused, modern, icon-heavy
+**Keywords:** 2D, minimalist, bold colors, clean lines, simple shapes, typography-focused, modern, icon-heavy, tinted shadows, floating cards
 
 **Best For:** Web apps, mobile apps, cross-platform, startup MVPs, user-friendly, SaaS, dashboards, corporate
 
-**Key Effects:** No gradients/shadows, simple hover (color/opacity shift), fast loading, clean transitions (150-200ms ease), minimal icons
+**Key Effects:** Colored (indigo-tinted) shadows on cards/buttons — not neutral gray, not shadow-free; simple hover (color/opacity shift + subtle lift); fast loading; clean transitions (150-200ms ease); icon-heavy (Heroicons/Lucide, never emoji)
+
+> **Why the override:** the base "Flat Design" style forbids shadows entirely, which read as bare/unfinished in review. Keeping flat 2D shapes and bold typography, but adding tinted shadows + a white card surface on top of the light indigo background restores depth without turning into skeuomorphism.
 
 ### Page Pattern
 
-**Pattern Name:** Minimal Single Column
+**Pattern Name:** App Store Style Landing
 
-- **Conversion Strategy:** Single CTA focus. Large typography. Lots of whitespace. No nav clutter. Mobile-first.
-- **CTA Placement:** Center, large CTA button
-- **Section Order:** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
+- **Conversion Strategy:** Show real screenshots. Include ratings (4.5+ stars). QR code for mobile. Platform-specific CTAs.
+- **CTA Placement:** Download buttons prominent (App Store + Play Store) throughout
+- **Section Order:** 1. Hero with device mockup, 2. Screenshots carousel, 3. Features with icons, 4. Reviews/ratings, 5. Download CTAs
 
 ---
 
 ## Anti-Patterns (Do NOT Use)
 
-- ❌ Complex onboarding
-- ❌ Slow performance
+- ❌ Poor profiles
+- ❌ No reviews
 
 ### Additional Forbidden Patterns
 
