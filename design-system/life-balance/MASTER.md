@@ -7,40 +7,42 @@
 ---
 
 **Project:** Life Balance
-**Generated:** 2026-07-11 00:40:40
+**Generated:** 2026-07-11 00:40:40 (superseded 2026-07-11 — palette/style replaced per user reference image)
 **Category:** Freelancer Platform
 
 ---
 
 ## Global Rules
 
-### Color Palette
+### Color Palette (v2 — coral/pink gradient, per user reference image)
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#6366F1` | `--color-primary` |
+| Primary | `#FF6B7A` | `--color-primary` |
 | On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#818CF8` | `--color-secondary` |
-| Accent/CTA | `#16A34A` | `--color-accent` |
-| Background | `#EEF2FF` | `--color-background` |
-| Foreground | `#312E81` | `--color-foreground` |
-| Muted | `#EBEFF9` | `--color-muted` |
-| Border | `#C7D2FE` | `--color-border` |
-| Destructive | `#DC2626` | `--color-destructive` |
-| Ring | `#6366F1` | `--color-ring` |
+| Accent/CTA (solid) | `#FF5F6D` | `--color-accent` |
+| Accent gradient start | `#FF9A8B` | `--color-accent-gradient-start` |
+| Accent gradient end | `#FF5F6D` | `--color-accent-gradient-end` |
+| Background | `#FFF1F1` | `--color-background` |
+| Surface (cards) | `#FFFFFF` | `--color-surface` |
+| Foreground | `#33262A` | `--color-foreground` |
+| Muted | `#FFE3E6` | `--color-muted` |
+| Border | `#FFD3D9` | `--color-border` |
+| Destructive | `#E63946` | `--color-destructive` |
+| Ring | `#FF6B7A` | `--color-ring` |
 
-**Color Notes:** Creative indigo + hire green [Accent adjusted from #22C55E for WCAG 3:1]. `background` (#EEF2FF) is the page/app canvas; `muted` (#EBEFF9) is for subtle secondary surfaces (sidebar, disabled fills); actual cards/inputs use white (`#FFFFFF`, not a separate token) with a tinted shadow so they float above the canvas — see Component Specs.
+**Color Notes:** Warm coral/pink palette replacing the earlier indigo system, per a reference mobile-app mockup (gradient coral background, white floating cards, pill gradient buttons, underline inputs). `background` (#FFF1F1) is a soft flat blush for data-dense app screens (Dashboard, Kanban, Timesheet) — readability first. Marketing-flavored screens (auth/onboarding) may use the full vivid two-stop gradient (`accent-gradient-start` → `accent-gradient-end`, diagonal) as the page background instead of flat `background`, matching the reference exactly. Cards are always white (`surface`) with a tinted coral shadow, never gradient-filled (gradient is reserved for buttons and small decorative headers only, so data stays readable).
 
-### Typography
+### Typography (v2)
 
-- **Heading Font:** Plus Jakarta Sans
-- **Body Font:** Plus Jakarta Sans
-- **Mood:** enterprise, saas, b2b, professional, indigo, modern, approachable, legible, ios dynamic type, android scaling
-- **Google Fonts:** [Plus Jakarta Sans + Plus Jakarta Sans](https://fonts.google.com/share?selection.family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400)
+- **Heading Font:** Varela Round
+- **Body Font:** Nunito Sans
+- **Mood:** soft, rounded, friendly, approachable, warm — matches the reference's rounded corners and gradient card style
+- **Google Fonts:** [Varela Round + Nunito Sans](https://fonts.google.com/share?selection.family=Nunito+Sans:wght@300;400;500;600;700|Varela+Round)
 
 **CSS Import:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Varela+Round&display=swap');
 ```
 
 ### Spacing Variables
@@ -70,33 +72,35 @@
 
 ## Component Specs
 
-### Buttons
+### Buttons (v2 — full pill, gradient fill)
 
 ```css
-/* Primary Button */
+/* Primary Button — pill shape, coral gradient, per reference */
 .btn-primary {
-  background: #16A34A;
+  background: linear-gradient(135deg, #FF9A8B 0%, #FF5F6D 100%);
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 999px; /* full pill, not 8px */
+  font-weight: 700;
+  font-family: 'Varela Round';
+  box-shadow: 0 8px 20px rgba(255, 95, 109, 0.35); /* colored shadow, not neutral */
   transition: all 200ms ease;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
   transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 95, 109, 0.45);
 }
 
 /* Secondary Button */
 .btn-secondary {
-  background: transparent;
-  color: #6366F1;
-  border: 2px solid #6366F1;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
+  background: white;
+  color: #FF6B7A;
+  border: 2px solid #FF6B7A;
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-weight: 700;
   transition: all 200ms ease;
   cursor: pointer;
 }
@@ -123,22 +127,46 @@ Cards use a **white surface** (`#FFFFFF`) distinct from the page background (`#E
 }
 ```
 
-### Inputs
+### Inputs (v2 — underline style with icon + small-caps label, per reference)
+
+```html
+<label class="input-label">CARDHOLDER NAME</label>
+<div class="input-underline">
+  <svg class="input-icon"><!-- 16px icon --></svg>
+  <input placeholder="Lorem Ipsum" />
+</div>
+```
 
 ```css
-.input {
-  background: #FFFFFF;
-  padding: 12px 16px;
-  border: 1px solid #C7D2FE;
-  border-radius: 8px;
-  font-size: 16px;
+.input-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #33262A99; /* foreground at ~60% */
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input-underline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 2px;
+  border: none;
+  border-bottom: 1.5px solid #FFD3D9; /* border token, bottom only — no box */
+  background: transparent;
   transition: border-color 200ms ease;
 }
 
-.input:focus {
-  border-color: #6366F1;
-  outline: none;
-  box-shadow: 0 0 0 3px #6366F120;
+.input-underline:focus-within {
+  border-bottom-color: #FF6B7A;
+}
+
+.input-icon {
+  width: 16px;
+  height: 16px;
+  color: #FF6B7A;
 }
 ```
 
@@ -173,15 +201,15 @@ Flat 2D icon language, but never emoji. Use **Heroicons** (outline, 1.5px stroke
 
 ## Style Guidelines
 
-**Style:** Flat Design, overridden with light depth ("Enterprise SaaS" polish)
+**Style (v2):** Soft Gradient / Rounded Consumer — replaces the earlier "Enterprise SaaS indigo" direction after the user shared a reference mockup (coral/pink checkout-flow UI) and asked to match it directly.
 
-**Keywords:** 2D, minimalist, bold colors, clean lines, simple shapes, typography-focused, modern, icon-heavy, tinted shadows, floating cards
+**Keywords:** full-pill rounded buttons, coral-to-salmon gradient fills, white floating cards on a soft blush canvas, underline inputs with icon + uppercase micro-label, rounded friendly typography (Varela Round/Nunito Sans), colored (coral) drop shadows, illustration-friendly
 
-**Best For:** Web apps, mobile apps, cross-platform, startup MVPs, user-friendly, SaaS, dashboards, corporate
+**Best For:** Consumer-facing mobile apps, checkout/onboarding flows, friendly SaaS tools that want to feel approachable rather than corporate
 
-**Key Effects:** Colored (indigo-tinted) shadows on cards/buttons — not neutral gray, not shadow-free; simple hover (color/opacity shift + subtle lift); fast loading; clean transitions (150-200ms ease); icon-heavy (Heroicons/Lucide, never emoji)
+**Key Effects:** Coral-tinted shadows (not neutral, not indigo); gradient reserved for buttons + optional card headers/hero bands (never full-page for data-dense screens); hover = lift + shadow bloom; fast loading; icon-heavy (simple line icons, never emoji)
 
-> **Why the override:** the base "Flat Design" style forbids shadows entirely, which read as bare/unfinished in review. Keeping flat 2D shapes and bold typography, but adding tinted shadows + a white card surface on top of the light indigo background restores depth without turning into skeuomorphism.
+> **Why the second override:** first pass (Flat Design → Enterprise SaaS indigo) was functionally sound per the skill's auto-recommendation, but didn't match the user's actual taste. Design taste is ultimately a subjective creative-direction call — once the user provided a concrete reference image, that reference takes priority over the algorithmic recommendation. Keep the accessibility/depth/icon discipline from the first override; swap only the palette, shape language (pill vs 8px radius), and input style to match the reference.
 
 ### Page Pattern
 
