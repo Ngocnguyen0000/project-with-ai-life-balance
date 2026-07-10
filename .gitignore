@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+.env
+.env.local
+
+# iOS
+apps/ios/**/DerivedData/
+apps/ios/**/*.xcuserstate
+apps/ios/**/xcuserdata/
+apps/ios/Pods/
+
+# Android
+apps/android/**/.gradle/
+apps/android/**/build/
+apps/android/local.properties
