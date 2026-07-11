@@ -5,6 +5,7 @@ Freelancer work + life-balance app: task/project management, time tracking, ligh
 Full requirements: [PRD.md](PRD.md)
 Epic/Story breakdown: [docs/epics/](docs/epics/)
 Design system (source of truth for colors/typography/spacing/components): [design-system/life-balance/MASTER.md](design-system/life-balance/MASTER.md)
+Supabase schema (source of truth for all tables/RLS/functions): [supabase/migrations/00000000000001_init_schema.sql](supabase/migrations/00000000000001_init_schema.sql), see [supabase/README.md](supabase/README.md) for an overview
 
 ## Working conventions
 - Each of the 3 clients (web, ios, android) is a separate codebase but must share the same Supabase schema and business rules — enforce shared logic (limits, validation) at the database layer (RLS policies, Postgres functions), not duplicated per-client.
