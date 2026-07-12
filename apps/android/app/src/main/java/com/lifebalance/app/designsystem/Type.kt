@@ -2,22 +2,19 @@ package com.lifebalance.app.designsystem
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.lifebalance.app.R
 
 /**
  * Nunito Sans type scale mirrored from design-system/life-balance/MASTER.md.
- * Requires Nunito Sans variable font files under res/font/ (nunito_sans.ttf or similar).
+ *
+ * Falls back to the system sans-serif until real Nunito Sans font files are added:
+ * download from https://fonts.google.com/specimen/Nunito+Sans, drop the .ttf files into
+ * res/font/ as nunito_sans_regular.ttf / _medium.ttf / _semibold.ttf / _bold.ttf, then swap
+ * this back to `FontFamily(Font(R.font.nunito_sans_regular, FontWeight.Normal), ...)`.
  */
-val NunitoSans = FontFamily(
-    Font(R.font.nunito_sans_regular, FontWeight.Normal),
-    Font(R.font.nunito_sans_medium, FontWeight.Medium),
-    Font(R.font.nunito_sans_semibold, FontWeight.SemiBold),
-    Font(R.font.nunito_sans_bold, FontWeight.Bold)
-)
+val NunitoSans = FontFamily.SansSerif
 
 object LBTextStyle {
     val display = TextStyle(fontFamily = NunitoSans, fontWeight = FontWeight.Bold, fontSize = 40.sp)

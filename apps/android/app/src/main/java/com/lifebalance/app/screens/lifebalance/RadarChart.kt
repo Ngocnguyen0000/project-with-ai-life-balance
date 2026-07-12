@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -122,11 +123,9 @@ private fun Column2(content: @Composable androidx.compose.foundation.layout.Colu
     )
 }
 
-private fun Modifier.offset(x: Float, y: Float): Modifier = this.then(
-    androidx.compose.ui.layout.layout { measurable, constraints ->
-        val placeable = measurable.measure(constraints)
-        layout(placeable.width, placeable.height) {
-            placeable.place(x.toInt() - placeable.width / 2, y.toInt() - placeable.height / 2)
-        }
+private fun Modifier.offset(x: Float, y: Float): Modifier = this.layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    layout(placeable.width, placeable.height) {
+        placeable.place(x.toInt() - placeable.width / 2, y.toInt() - placeable.height / 2)
     }
-)
+}
